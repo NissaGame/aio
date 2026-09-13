@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html manifest="900.manifest">
+<head>
+<title>PS4 [5.05] 7.00 - 13.00 FW GoldHEN Host</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.loading-container { position: fixed; top: 50%; left: 50%; display: flex; flex-direction: column; align-items: center; gap: 18px; margin: 0; transform: translate(-50%, -50%); text-align: center; }
+.loading-spinner { width: 48px; height: 48px; border: 5px solid rgba(255, 255, 255, 0.3); border-top-color: #f31414; border-radius: 50%; animation: loading-spin 0.8s linear infinite; }
+.loading-status { font-size: 24px; }
+.goldhen-title { font-size: 42px; animation: goldhen-title-glow 2.4s ease-in-out infinite; }
+@keyframes goldhen-title-glow {
+	0%, 100% { color: #f31414; text-shadow: 0 0 8px rgba(243, 20, 20, 0.8), 0 0 18px rgba(243, 20, 20, 0.5); }
+	33% { color: #ffd700; text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 18px rgba(255, 215, 0, 0.5); }
+	66% { color: #a855f7; text-shadow: 0 0 8px rgba(168, 85, 247, 0.8), 0 0 18px rgba(168, 85, 247, 0.5); }
+}
+@keyframes loading-spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<script>
+history.replaceState(null,null,'index.html');var histlength=history.length;history.go(-histlength);
+function completeJailbreak(){var spinner=document.getElementById("loading-spinner");var status=document.getElementById("loading-status");if(spinner)spinner.remove();if(status)status.textContent="Jailbreak berhasil dijalankan!";}
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
+function DisplayCacheProgress(){window.msgs.innerHTML="Cache Installed Successfully ✔";setTimeout(function(){window.msgs.innerHTML="Now Close And Re-Open Your Browser ...";},1500);}
+window.applicationCache.addEventListener("progress",DLProgress,false);
+window.applicationCache.oncached=function(e){DisplayCacheProgress();};
+window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+window.applicationCache.onerror=function(e){window.msgs.innerHTML="Error Installing Cache! - Clear and Re-Open Your Browser ...";};
+</script>
+<h1 class="goldhen-title">PS4 [5.05] 7.00 - 13.00 FW GoldHEN Host</h1>
+<br>
+<h1 id="msgs" class="loading-container">
+<span id="loading-spinner" class="loading-spinner" aria-hidden="true"></span>
+<span id="loading-status">Proses sedang berlangsung...</span>
+</h1>
+</body>
+</html>
